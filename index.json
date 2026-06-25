@@ -1,9 +1,9 @@
 [
   {
     "name": "\u770b\u6f2b\u7f51",
-    "url": "https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/kanman.js",
-    "key": "kanman_custom",
-    "version": "1.0.2",
+    "url": "https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/kanman_v2.js",
+    "key": "kanman_custom_v2",
+    "version": "1.1.0",
     "description": "\u770b\u6f2b\u7f51 Venera \u56fe\u6e90"
   }
 ]
