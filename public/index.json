@@ -1,9 +1,8 @@
-﻿[
+[
   {
-    "name": "测试源",
-    "fileName": "test_source.js",
-    "key": "test_source",
-    "version": "1.0.0",
-    "description": "测试 Venera 源格式"
+    "name": "Venera???",
+    "fileName": "venera_test.js",
+    "key": "venera_test",
+    "version": "1.0.0"
   }
 ]
