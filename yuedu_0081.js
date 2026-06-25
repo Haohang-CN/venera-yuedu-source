@@ -2,7 +2,7 @@
 class Yuedu0081 extends ComicSource {
     name = "\ufe0f\u5575\u4e50\u6f2b\u753b"
     key = "yuedu_0081"
-    version = "1.0.0"
+    version = "1.0.2"
     minAppVersion = "1.6.0"
     url = "https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/yuedu_0081.js"
 
@@ -353,4 +353,5 @@ class Yuedu0081 extends ComicSource {
             .replace(/"/g, "&quot;")
     }
 }
+
 
