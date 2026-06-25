@@ -295,7 +295,8 @@ class Yuedu0060 extends ComicSource {
         let clean = String(text || "").replace(/\r/g, "").split("\n")
 
         for (let para of clean) {
-            para = para.trim()
+            para = String(para || "").trim()
+
             if (!para) {
                 lines.push("")
                 continue
@@ -312,20 +313,36 @@ class Yuedu0060 extends ComicSource {
 
         for (let i = 0; i < lines.length; i += perPage) {
             let part = lines.slice(i, i + perPage)
-            let tspans = part.map((line, idx) => {
-                let y = 70 + idx * 34
-                return `<text x="40" y="${y}" font-size="26" fill="#222">${this.escapeXml(line)}</text>`
-            }).join("")
+            let tspans = ""
 
-            let svg = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200">
-<rect width="100%" height="100%" fill="#f7f3e8"/>
-${tspans}
-</svg>`
+            for (let j = 0; j < part.length; j++) {
+                let line = part[j]
+                let y = 70 + j * 34
+                tspans += "<text x=\"40\" y=\"" + y + "\" font-size=\"26\" fill=\"#222\">" +
+                    this.escapeXml(line) +
+                    "</text>"
+            }
+
+            let svg =
+                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"900\" height=\"1200\">" +
+                "<rect width=\"100%\" height=\"100%\" fill=\"#f7f3e8\"/>" +
+                tspans +
+                "</svg>"
 
             pages.push("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg))
         }
 
-        return pages.length ? pages : ["data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200"><text x="40" y="80" font-size="28">绌哄唴瀹?/text></svg>')]
+        if (pages.length === 0) {
+            let emptySvg =
+                "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"900\" height=\"1200\">" +
+                "<rect width=\"100%\" height=\"100%\" fill=\"#f7f3e8\"/>" +
+                "<text x=\"40\" y=\"80\" font-size=\"28\" fill=\"#222\">空内容</text>" +
+                "</svg>"
+
+            pages.push("data:image/svg+xml;charset=utf-8," + encodeURIComponent(emptySvg))
+        }
+
+        return pages
     }
 
     escapeXml(s) {
