@@ -7,7 +7,7 @@ class YDOK0088 extends ComicSource {
 
     baseUrl = "https://cn.bzmanga.com"
     searchUrl = "https://cn.bzmanga.com"
-    placeholder = "https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/placeholder.png"
+    placeholder = "https://cdn.jsdelivr.net/gh/Haohang-CN/venera-yuedu-source@main/placeholder.png"
 
     searchItemSelector = ".book-list li, .novel-list li, .list li, li"
     searchNameSelector = "a, .name, .title, h3"
@@ -139,11 +139,35 @@ class YDOK0088 extends ComicSource {
             id: this.absUrl(href, pageUrl),
             title: title,
             subTitle: [author, last].filter(x => x).join(" / "),
-            cover: this.placeholder,
+            cover: "https://cdn.jsdelivr.net/gh/Haohang-CN/venera-yuedu-source@main/placeholder.png",
             tags: [],
             description: ""
         })
     }
+
+    explore = [
+        {
+            title: "首页",
+            type: "multiPartPage",
+            load: async (page) => {
+                return [
+                    {
+                        title: "源信息",
+                        comics: [
+                            new Comic({
+                                id: this.baseUrl || "source_info",
+                                title: this.name,
+                                subTitle: this.baseUrl || "已导入",
+                                cover: "https://cdn.jsdelivr.net/gh/Haohang-CN/venera-yuedu-source@main/placeholder.png",
+                                tags: ["1119转换源"],
+                                description: "该源由阅读书源转换。请优先使用搜索功能测试。"
+                            })
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
 
     search = {
         load: async (keyword, options, page) => {
@@ -211,7 +235,7 @@ class YDOK0088 extends ComicSource {
             return new ComicDetails({
                 title: title,
                 subTitle: author,
-                cover: this.placeholder,
+                cover: "https://cdn.jsdelivr.net/gh/Haohang-CN/venera-yuedu-source@main/placeholder.png",
                 description: intro,
                 tags: author ? { "作者": [author] } : {},
                 chapters: chapters,
