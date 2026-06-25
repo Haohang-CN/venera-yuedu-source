@@ -7,7 +7,7 @@ class YDOK0050 extends ComicSource {
 
     baseUrl = "http://www.guoman.cc"
     searchUrl = "http://www.guoman.cc"
-    placeholder = "https://cdn.jsdelivr.net/gh/Haohang-CN/venera-yuedu-source@main/placeholder.png"
+    placeholder = "https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/placeholder.png?v=safe301"
 
     searchItemSelector = ".book-list li, .novel-list li, .list li, li"
     searchNameSelector = "a, .name, .title, h3"
@@ -245,10 +245,17 @@ class YDOK0050 extends ComicSource {
 
         loadEp: async (comicId, epId) => {
             let url = this.absUrl(epId, comicId || this.baseUrl)
+
+            if (!url) {
+                return {
+                    images: ["https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/placeholder.png?v=safe301"]
+                }
+            }
+
             let html = await this.getHtml(url, comicId || this.baseUrl)
             let doc = this.doc(html)
 
-            let images = []
+            let candidates = []
             let nodes = this.qsa(doc, this.contentSelector)
 
             if (nodes.length === 0) {
@@ -265,20 +272,40 @@ class YDOK0050 extends ComicSource {
 
                 v = this.absUrl(v, url)
 
-                if (this.isImage(v)) {
-                    images.push(v)
+                if (this.isGoodImageLink(v)) {
+                    candidates.push(v)
+                }
+            }
+
+            let found = this.findImages(html, url)
+
+            for (let img of found) {
+                if (this.isGoodImageLink(img)) {
+                    candidates.push(img)
+                }
+            }
+
+            candidates = Array.from(new Set(candidates))
+
+            let images = []
+
+            for (let img of candidates) {
+                if (images.length >= 80) break
+
+                let ok = await this.checkImage(img, url)
+
+                if (ok) {
+                    images.push(img)
                 }
             }
 
             if (images.length === 0) {
-                images = this.findImages(html, url)
+                images = ["https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/placeholder.png?v=safe301"]
             }
 
-            if (images.length === 0) {
-                images = [this.placeholder]
+            return {
+                images: images
             }
-
-            return { images: images }
         },
 
         onImageLoad: (url, comicId, epId) => {
@@ -317,4 +344,36 @@ class YDOK0050 extends ComicSource {
 
         return Array.from(new Set(out))
     }
+
+    isGoodImageLink(u) {
+        if (!u) return false
+
+        u = String(u).trim()
+        let lower = u.toLowerCase()
+
+        if (!lower) return false
+        if (lower === "null") return false
+        if (lower === "undefined") return false
+        if (lower.startsWith("javascript:")) return false
+        if (lower.startsWith("#")) return false
+        if (lower.indexOf("javascript:;") >= 0) return false
+
+        return this.isImage(u)
+    }
+
+    async checkImage(u, ref) {
+        try {
+            if (!this.isGoodImageLink(u)) return false
+
+            let res = await Network.get(u, {
+                "User-Agent": "Mozilla/5.0",
+                "Referer": ref || this.baseUrl
+            })
+
+            return res.status >= 200 && res.status < 300
+        } catch (e) {
+            return false
+        }
+    }
+
 }
