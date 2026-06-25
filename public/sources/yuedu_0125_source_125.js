@@ -1,0 +1,84 @@
+class YueduConvertedSource extends ComicSource {
+    name = "🌐新新漫画"
+    key = "yuedu_0125_source_125"
+    version = "1.0.0"
+    minAppVersion = "1.0.0"
+    url = "https://m.77mh.xyz"
+
+    // 原始阅读书源规则，保留在这里，方便后续手工改写
+    rawYueduSource = {
+  "bookSourceComment": "",
+  "bookSourceGroup": "漫画",
+  "bookSourceName": "🌐新新漫画",
+  "bookSourceType": 2,
+  "bookSourceUrl": "https://m.77mh.xyz",
+  "customOrder": 2642,
+  "enabled": true,
+  "enabledCookieJar": false,
+  "enabledExplore": true,
+  "exploreUrl": "热血机战::/rexue/index_{{page}}.html\n科幻未来::/kehuan/index_{{page}}.html\n恐怖惊悚::/kongbu/index_{{page}}.html\n推理悬疑::/xuanyi/index_{{page}}.html\n滑稽搞笑::/gaoxiao/index_{{page}}.html\n恋爱生活::/love/index_{{page}}.html\n耽美人生::/danmei/index_{{page}}.html\n体育竞技::/tiyu/index_{{page}}.html\n纯情少女::/chunqing/index_{{page}}.html\n魔法奇幻::/qihuan/index_{{page}}.html\n武侠经典::/wuxia/index_{{page}}.html",
+  "header": "{\n  \"User-Agent\": \"Mozilla/5.0 (Linux; Android 8.1.0; JKM-AL00b Build/HUAWEIJKM-AL00b; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/044807 Mobile Safari/537.36\"\n}",
+  "lastUpdateTime": 1728715691270,
+  "respondTime": 47331,
+  "ruleBookInfo": {
+    "author": ".author@tag.a@text",
+    "coverUrl": "",
+    "init": "",
+    "intro": ".intro@text",
+    "kind": ".state@tag.a@text",
+    "lastChapter": ".chapLiList-cont@tag.li.0@a@text",
+    "name": "tag.h1@text"
+  },
+  "ruleContent": {
+    "content": "@js:\nheaders={\"headers\":{\"Referer\":baseUrl}};\n//执行eval函数，获取图片列表信息\neval(result.match(/(eval\\([\\s\\S]+?)\\s*<\\/script>/)[1]);\n//图片服务器列表，抓包可得\nserver=[\"https://picsh.77dm.top\",\"https://hws.gdbyhtl.net\",\"https://a16d.gdbyhtl.net:64443\",\"https://imgmum.dm365.top:2096\",\"https://picsh.77dm.top\",\"https://imgsh.dm365.top\"];\nserver2=[\"https://picsh.77dm.top\"];\n//自动选可用服务器\nvar select=\"\";for(let i=0;i<server.length;i++){if(select==\"\"){if(String(java.ajax(server[i]+\"/h\"+img_s+\"/\"+msg.split(\"|\")[0]+'.webp')).match(/webp/i)){select=i;}}}\n//拼接img标签\nmsg.split(\"|\").map(url=>\n'<img src=\"'+server2+\"/h\"+img_s+\"/\"+url+'.webp'+','+JSON.stringify(headers)+'\">').join(\"\\n\")",
+    "imageStyle": "FULL",
+    "nextContentUrl": "",
+    "webJs": ""
+  },
+  "ruleExplore": {
+    "author": "",
+    "bookList": "",
+    "bookUrl": "",
+    "coverUrl": "",
+    "intro": "",
+    "name": ""
+  },
+  "ruleSearch": {
+    "author": "class.author@tag.b@text",
+    "bookList": ".list@a",
+    "bookUrl": "tag.a@href",
+    "checkKeyWord": "",
+    "coverUrl": "tag.img@src",
+    "intro": "class.info@ownText",
+    "kind": "",
+    "lastChapter": "",
+    "name": ".title@text",
+    "wordCount": ".uptime@text"
+  },
+  "ruleToc": {
+    "chapterList": "-@css:.chapLiList-cont li",
+    "chapterName": "tag.a@text",
+    "chapterUrl": "tag.a@href",
+    "updateTime": ""
+  },
+  "searchUrl": "https://so.77mh.xyz/m.php?k={{key}}",
+  "weight": 0
+}
+
+    search = {
+        load: async (keyword, options, page) => {
+            throw new Error("这是由阅读书源 JSON 自动转换的占位源。Venera 是漫画阅读器，阅读书源不能直接使用，需要手工改写 search.load。")
+        },
+        optionList: []
+    }
+
+    comic = {
+        loadInfo: async (id) => {
+            throw new Error("这是阅读书源占位源，需要手工把小说目录规则改写成 Venera comic.loadInfo。")
+        },
+
+        loadEp: async (comicId, epId) => {
+            throw new Error("Venera 的 loadEp 需要返回图片数组 images；阅读书源返回的是小说文本，不能直接通用转换。")
+        }
+    }
+}

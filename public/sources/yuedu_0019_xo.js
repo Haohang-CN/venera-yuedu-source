@@ -1,0 +1,62 @@
+class YueduConvertedSource extends ComicSource {
+    name = "xo图片🌇"
+    key = "yuedu_0019_xo"
+    version = "1.0.0"
+    minAppVersion = "1.0.0"
+    url = "https://song-hard-gold.xofulitu-102.com/xoxo"
+
+    // 原始阅读书源规则，保留在这里，方便后续手工改写
+    rawYueduSource = {
+  "bookSourceGroup": "漫画",
+  "bookSourceName": "xo图片🌇",
+  "bookSourceType": 2,
+  "bookSourceUrl": "https://song-hard-gold.xofulitu-102.com/xoxo",
+  "customOrder": 229,
+  "enabled": true,
+  "enabledCookieJar": true,
+  "enabledExplore": true,
+  "exploreUrl": "\n　/arttype/2000-{{page}}/<b>美图一区</b></font></a></dt>\n　热姐::/arttype/2001-{{page}}/\n　杂志::/arttype/2004-{{page}}/\n　美足::/arttype/5029-{{page}}/\n　日本::/arttype/5032-{{page}}/\n　东盟::/arttype/5033-{{page}}/\n　韩国::/t/5034-{{page}}/\n　柚木::/arttype/5035-{{page}}/\n　年年::/arttype/5039-{{page}}/\n　/arttype/2000-{{page}}/<b>美图二区</b></font></a></dt>\n　罗莉塔 ::/arttype/2002-{{page}}/\n　性感的::/arttype/2003-{{page}}/\n　角色扮演::/arttype/5001-{{page}}/\n　唯美写真::/arttype/5030-{{page}}/\n　模特儿::/arttype/5031-{{page}}/\n　少女映画::/arttype/5036-{{page}}/\n　沫沫真爱::/arttype/5037-{{page}}/\n　Fushii_海堂::/arttype/5038-{{page}}/\n\t\n cos::/artsearch/page/{{page}}/wd/cos/\n角色::/artsearch/page/{{page}}/wd/角色/\n性感::/artsearch/page/{{page}}/wd/性感/\n圣光::/artsearch/page/{{page}}/wd/圣光/\n凸凹::/artsearch/page/{{page}}/wd/凹凸/\n重口::/artsearch/page/{{page}}/wd/重口/\n精选::/artsearch/page/{{page}}/wd/精选/\n高清::/artsearch/page/{{page}}/wd/高清/\n美女::/artsearch/page/{{page}}/wd/美女/\n尺度::/artsearch/page/{{page}}/wd/尺度/\n情趣::/artsearch/page/{{page}}/wd/情趣/\n  衣::/artsearch/page/{{page}}/wd/衣/\n  乳::/artsearch/page/{{page}}/wd/乳/\n  女::/artsearch/page/{{page}}/wd/女/\n  服::/artsearch/page/{{page}}/wd/服/\n  精::/artsearch/page/{{page}}/wd/精/\n  开::/artsearch/page/{{page}}/wd/开/\n  花::/artsearch/page/{{page}}/wd/花/\n  内::/artsearch/page/{{page}}/wd/内/\n  裸::/artsearch/page/{{page}}/wd/裸/\n  丝::/artsearch/page/{{page}}/wd/丝/\n  写::/artsearch/page/{{page}}/wd/写/\n  ai::/artsearch/page/{{page}}/wd/ai/\n  脱::/artsearch/page/{{page}}/wd/脱/\n  娘::/artsearch/page/{{page}}/wd/娘/\n　",
+  "lastUpdateTime": 1757231934766,
+  "respondTime": 180000,
+  "ruleBookInfo": {},
+  "ruleContent": {
+    "content": "class.picture-image@img@html"
+  },
+  "ruleExplore": {
+    "author": "",
+    "bookList": "class.picture-list@a",
+    "bookUrl": "a@href",
+    "coverUrl": ".album-img img@data-src||.album-img img@src",
+    "name": "class.album-name@text"
+  },
+  "ruleSearch": {
+    "bookList": "",
+    "bookUrl": "",
+    "name": ""
+  },
+  "ruleToc": {
+    "chapterList": "class.picture-item",
+    "chapterName": "class.title@text",
+    "chapterUrl": "a@href"
+  },
+  "searchUrl": "",
+  "weight": 0
+}
+
+    search = {
+        load: async (keyword, options, page) => {
+            throw new Error("这是由阅读书源 JSON 自动转换的占位源。Venera 是漫画阅读器，阅读书源不能直接使用，需要手工改写 search.load。")
+        },
+        optionList: []
+    }
+
+    comic = {
+        loadInfo: async (id) => {
+            throw new Error("这是阅读书源占位源，需要手工把小说目录规则改写成 Venera comic.loadInfo。")
+        },
+
+        loadEp: async (comicId, epId) => {
+            throw new Error("Venera 的 loadEp 需要返回图片数组 images；阅读书源返回的是小说文本，不能直接通用转换。")
+        }
+    }
+}

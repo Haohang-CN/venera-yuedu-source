@@ -1,0 +1,69 @@
+class YueduConvertedSource extends ComicSource {
+    name = "漫画大全"
+    key = "yuedu_0243_source_243"
+    version = "1.0.0"
+    minAppVersion = "1.0.0"
+    url = "https://www.manhuadb.com#♤Haxc"
+
+    // 原始阅读书源规则，保留在这里，方便后续手工改写
+    rawYueduSource = {
+  "bookSourceComment": "加载有些慢\n// Error: Connection reset",
+  "bookSourceGroup": "漫画",
+  "bookSourceName": "漫画大全",
+  "bookSourceType": 2,
+  "bookSourceUrl": "https://www.manhuadb.com#♤Haxc",
+  "bookUrlPattern": "",
+  "customOrder": 5577,
+  "enabled": true,
+  "enabledCookieJar": true,
+  "enabledExplore": true,
+  "exploreUrl": "全部漫画::https://www.manhuadb.com/manhua/list-page-{{page}}.html\n日本漫画::https://www.manhuadb.com/manhua/list-r-4-page-{{page}}.html\n香港漫画::https://www.manhuadb.com/manhua/list-r-5-page-{{page}}.html\n韩国漫画::https://www.manhuadb.com/manhua/list-r-6-page-{{page}}.html\n台湾漫画::https://www.manhuadb.com/manhua/list-r-7-page-{{page}}.html\n连载中::https://www.manhuadb.com/manhua/list-s-1-page-{{page}}.html\n已完结::https://www.manhuadb.com/manhua/list-s-2-page-{{page}}.html\n少年::https://www.manhuadb.com/manhua/list-a-3-page-{{page}}.html\n青年::https://www.manhuadb.com/manhua/list-a-4-page-{{page}}.html\n少女::https://www.manhuadb.com/manhua/list-a-5-page-{{page}}.html\n男性::https://www.manhuadb.com/manhua/list-a-6-page-{{page}}.html\n女性::https://www.manhuadb.com/manhua/list-a-7-page-{{page}}.html\n通用::https://www.manhuadb.com/manhua/list-a-9-page-{{page}}.html\n儿童::https://www.manhuadb.com/manhua/list-a-10-page-{{page}}.html\n爱情::https://www.manhuadb.com/manhua/list-c-26-page-{{page}}.html\n搞笑::https://www.manhuadb.com/manhua/list-c-41-page-{{page}}.html\n冒险::https://www.manhuadb.com/manhua/list-c-12-page-{{page}}.html\n魔幻::https://www.manhuadb.com/manhua/list-c-48-page-{{page}}.html\n科幻::https://www.manhuadb.com/manhua/list-c-20-page-{{page}}.html\n热血::https://www.manhuadb.com/manhua/list-c-46-page-{{page}}.html\n奇幻::https://www.manhuadb.com/manhua/list-c-13-page-{{page}}.html\n动作::https://www.manhuadb.com/manhua/list-c-18-page-{{page}}.html\n生活::https://www.manhuadb.com/manhua/list-c-33-page-{{page}}.html\n喜剧::https://www.manhuadb.com/manhua/list-c-32-page-{{page}}.html\n恐怖::https://www.manhuadb.com/manhua/list-c-16-page-{{page}}.html\n悬疑::https://www.manhuadb.com/manhua/list-c-27-page-{{page}}.html\n校园::https://www.manhuadb.com/manhua/list-c-40-page-{{page}}.html\n耽美::https://www.manhuadb.com/manhua/list-c-53-page-{{page}}.html\n格斗::https://www.manhuadb.com/manhua/list-c-44-page-{{page}}.html\n神鬼::https://www.manhuadb.com/manhua/list-c-52-page-{{page}}.html\n百合::https://www.manhuadb.com/manhua/list-c-39-page-{{page}}.html\n竞技::https://www.manhuadb.com/manhua/list-c-55-page-{{page}}.html\n魔法::https://www.manhuadb.com/manhua/list-c-43-page-{{page}}.html\n职业::https://www.manhuadb.com/manhua/list-c-22-page-{{page}}.html\n伪娘::https://www.manhuadb.com/manhua/list-c-60-page-{{page}}.html\n战争::https://www.manhuadb.com/manhua/list-c-30-page-{{page}}.html\n励志::https://www.manhuadb.com/manhua/list-c-47-page-{{page}}.html\n体育::https://www.manhuadb.com/manhua/list-c-11-page-{{page}}.html\n历史::https://www.manhuadb.com/manhua/list-c-9-page-{{page}}.html\n萌系::https://www.manhuadb.com/manhua/list-c-59-page-{{page}}.html\n推理::https://www.manhuadb.com/manhua/list-c-19-page-{{page}}.html\n职场::https://www.manhuadb.com/manhua/list-c-58-page-{{page}}.html\n四格::https://www.manhuadb.com/manhua/list-c-56-page-{{page}}.html\n美食::https://www.manhuadb.com/manhua/list-c-45-page-{{page}}.html\n料理::https://www.manhuadb.com/manhua/list-c-29-page-{{page}}.html\n治愈::https://www.manhuadb.com/manhua/list-c-54-page-{{page}}.html\n侦探::https://www.manhuadb.com/manhua/list-c-51-page-{{page}}.html\n惊悚::https://www.manhuadb.com/manhua/list-c-21-page-{{page}}.html\n音乐::https://www.manhuadb.com/manhua/list-c-17-page-{{page}}.html\n武侠::https://www.manhuadb.com/manhua/list-c-23-page-{{page}}.html\n社会::https://www.manhuadb.com/manhua/list-c-37-page-{{page}}.html\n后宫::https://www.manhuadb.com/manhua/list-c-57-page-{{page}}.html\n资料集::https://www.manhuadb.com/manhua/list-c-28-page-{{page}}.html\n传记::https://www.manhuadb.com/manhua/list-c-10-page-{{page}}.html\n宅男::https://www.manhuadb.com/manhua/list-c-49-page-{{page}}.html\n灾难::https://www.manhuadb.com/manhua/list-c-34-page-{{page}}.html\n黑道::https://www.manhuadb.com/manhua/list-c-62-page-{{page}}.html\n杂志::https://www.manhuadb.com/manhua/list-c-42-page-{{page}}.html\n舞蹈::https://www.manhuadb.com/manhua/list-c-50-page-{{page}}.html\n机战::https://www.manhuadb.com/manhua/list-c-61-page-{{page}}.html\n腐女::https://www.manhuadb.com/manhua/list-c-63-page-{{page}}.html",
+  "lastUpdateTime": 1720293507361,
+  "loginUrl": "",
+  "respondTime": 200647,
+  "ruleBookInfo": {
+    "author": "class.creators@tag.a@text",
+    "coverUrl": "class.comic-cover@tag.img@src",
+    "intro": "class.comic_story@text",
+    "kind": "class.tags@tag.a@text",
+    "lastChapter": ".num_div@tag.li.-1@a@text",
+    "name": "class.comic-title@text"
+  },
+  "ruleContent": {
+    "content": "<js>\ndata=(String(java.base64Decode(result.match(/img_data = \\'(.*?)\\'/)[1])));\nbid=result.match(/data-img_pre=\\\"(.*?)\\\"/)[1];\nhost=result.match(/data-host=\\\"(.*?)\\\"/)[1];\njava.put(\"bid\",bid);\njava.put(\"host\",host);\ndata\n</js>$.[*]img\n@js:result.split(\"\\n\").map(a=>'<img src=\"'+java.get(\"host\")+java.get(\"bid\")+a+'\">').join(\"\\n\")",
+    "imageStyle": "FULL"
+  },
+  "ruleExplore": {},
+  "ruleSearch": {
+    "author": "class.comic-author@tag.a@text||class.comic-creators@tag.a@text",
+    "bookList": "class.comicbook-index||class.comic-book-unit",
+    "bookUrl": "tag.a.0@href",
+    "coverUrl": "tag.img@src",
+    "name": "tag.h2@tag.a.0@text"
+  },
+  "ruleToc": {
+    "chapterList": ".num_div@li",
+    "chapterName": "tag.a@text",
+    "chapterUrl": "tag.a@href"
+  },
+  "searchUrl": "https://www.manhuadb.com/search?q={{key}}&p={{page}}",
+  "weight": 49
+}
+
+    search = {
+        load: async (keyword, options, page) => {
+            throw new Error("这是由阅读书源 JSON 自动转换的占位源。Venera 是漫画阅读器，阅读书源不能直接使用，需要手工改写 search.load。")
+        },
+        optionList: []
+    }
+
+    comic = {
+        loadInfo: async (id) => {
+            throw new Error("这是阅读书源占位源，需要手工把小说目录规则改写成 Venera comic.loadInfo。")
+        },
+
+        loadEp: async (comicId, epId) => {
+            throw new Error("Venera 的 loadEp 需要返回图片数组 images；阅读书源返回的是小说文本，不能直接通用转换。")
+        }
+    }
+}
