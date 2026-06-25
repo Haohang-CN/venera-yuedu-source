@@ -1,4 +1,4 @@
-
+﻿
 class Yuedu0043 extends ComicSource {
     name = "\ud83d\udd1eCin\u6f2b( \u4f18++ )"
     key = "yuedu_0043"
@@ -141,7 +141,7 @@ class Yuedu0043 extends ComicSource {
             id: this.absUrl(href, pageUrl),
             title: title,
             subTitle: [author, last].filter(x => x).join(" / "),
-            cover: cover,
+            cover: "https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/placeholder.png",
             tags: [],
             description: ""
         })
@@ -211,9 +211,9 @@ class Yuedu0043 extends ComicSource {
             return new ComicDetails({
                 title: title || this.name,
                 subTitle: author,
-                cover: cover,
+                cover: "https://raw.githubusercontent.com/Haohang-CN/venera-yuedu-source/main/placeholder.png",
                 description: intro,
-                tags: author ? { "作者": [author] } : {},
+                tags: author ? { "浣滆€?: [author] } : {},
                 chapters: chapters,
                 url: url
             })
@@ -262,7 +262,7 @@ class Yuedu0043 extends ComicSource {
 
             let text = texts.join("\n\n").replace(/\n{3,}/g, "\n\n").trim()
             if (!text) {
-                text = "未能解析正文内容。\n\n当前章节地址：\n" + url
+                text = "鏈兘瑙ｆ瀽姝ｆ枃鍐呭銆俓n\n褰撳墠绔犺妭鍦板潃锛歕n" + url
             }
 
             doc.dispose()
@@ -325,7 +325,7 @@ ${tspans}
             pages.push("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg))
         }
 
-        return pages.length ? pages : ["data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200"><text x="40" y="80" font-size="28">空内容</text></svg>')]
+        return pages.length ? pages : ["data:image/svg+xml;charset=utf-8," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200"><text x="40" y="80" font-size="28">绌哄唴瀹?/text></svg>')]
     }
 
     escapeXml(s) {
@@ -336,3 +336,4 @@ ${tspans}
             .replace(/"/g, "&quot;")
     }
 }
+
